@@ -1,0 +1,37 @@
+{
+  "name": "go-horse-db",
+  "version": "1.0.0",
+  "description": "Go Horse DB is a REST-based database, built on top of lowdb package, a small JSON database for Node.",
+  "keywords": [
+    "flat",
+    "file",
+    "local",
+    "database",
+    "storage",
+    "JSON",
+    "REST",
+    "API",
+    "Go horse",
+    "XGH"
+  ],
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "set DEBUG_MODE=true && set AUTH_MODE=true && set AUTH_TOKEN_READ=mudar123 && node src/index.js",
+    "dev-encrypt": "set DEBUG_MODE=true && set ENCRYPTION_MODE=true && node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asolera/go-horse-db.git"
+  },
+  "author": "Andrew Solera (andrewsolera@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
+    "uuid": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=6"
+  }
+}

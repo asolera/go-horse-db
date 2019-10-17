@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  go-horse-db:
+    image: asolera/go-horse-db:1.0
+    environment:
+      AUTH_MODE: 'true'
+      AUTH_TOKEN_WRITE: 'Cq1rrD9Cyw'
+      DEBUG_MODE: 'true'
+    ports:
+    - "3000"
+    networks:
+      - traefik-net
+    volumes:
+      - go-horse-db-data:/home/node/app/data
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        # Traefik v1.7
+        - "traefik.enable=true"
+        - "traefik.port=3000"
+        - "traefik.docker.network=traefik-net"
+        - "traefik.frontend.priority=99"
+        - "traefik.frontend.redirect.regex=^(.*)/go-horse-db$$"
+        - "traefik.frontend.redirect.replacement=$$1/go-horse-db/"
+        - "traefik.frontend.rule=PathPrefix:/go-horse-db;ReplacePathRegex: ^/go-horse-db/(.*) /$$1"
+
+networks:
+  traefik-net:
+    external: true
+ 
+volumes:
+  go-horse-db-data:
