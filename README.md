@@ -1,12 +1,12 @@
-# :horse: Go Horse DB 
+# :horse: HorseDB 
 
-Go Horse DB is a REST-based database, built on top of [lowdb](https://github.com/typicode/lowdb) package (a small JSON database for Node). :horse:
+HorseDB is a REST-based database, built on top of [lowdb](https://github.com/typicode/lowdb) package (a small JSON database for Node), inspired by Extreme Go Horse Process. :horse:
 
-Similar to [json-server](https://github.com/typicode/json-server), Go Horse DB was created to allow quick storage for configuration data. 
+Similar to [json-server](https://github.com/typicode/json-server), HorseDB was created to allow quick storage for configuration data. 
 
 ## Installation
 
-Go Horse DB can be deployed with Docker.
+HorseDB can be deployed with Docker.
 
 - **Docker Hub:** https://hub.docker.com/r/asolera/go-horse-db
 
@@ -21,16 +21,16 @@ To persist data inside host, create a volume mapped to `/home/node/app/data`.
 Example:
 
 ```sh
-docker run -d -p 3000:3000 -v go-horse-db-data:/home/node/app/data --name go-horse-db asolera/go-horse-db:1.0
+docker run -d -p 3000:3000 -v horsedb-data:/home/node/app/data --name horsedb asolera/horsedb:1.0
 ```
 
 You can also set environment variables with various options (see below).
 
-Go Horse DB can also be deployed as a service. [See example](docker-stack.yml).
+HorseDB can also be deployed as a service. [See example](docker-stack.yml).
 
 ## Usage / API
 
-Go Horse DB creates a new JSON file for every database provided in API.  
+HorseDB creates a new JSON file for every database provided in API.  
 It also creates an UUID for every data inserted.
 
 This API was built for Docker environment and can be accessible via configured port (default is 3000).
