@@ -37,6 +37,12 @@ class Database {
         return this._db.defaults({[key]: []}).write();
     }
 
+    _singlePost(key, value) {
+        value._id = uuidv1();
+        this._db.get(key).push(value).write();
+        return value;
+    }
+
     get(key) {
         if (!this._has(key)) return false;
         return this._db.get(key).value();
@@ -53,9 +59,14 @@ class Database {
 
     post(key, value) {
         this._prepare(key);
-        value._id = uuidv1();
         if (config.debugMode == 'true') console.table(value);
-        this._db.get(key).push(value).write();
+
+        if (Array.isArray(value)) {
+            value = value.map(row => this._singlePost(key, row));
+        } else {
+            value = this._singlePost(key, value);
+        }
+        
         return value;
     }
 
