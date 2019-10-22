@@ -73,6 +73,12 @@ class Database {
         this._db.get(key).remove({ _id }).write();
         return true;
     }
+
+    removeTable(key) {
+        if (!this._has(key)) return false;
+        this._db.get(key).remove().write();
+        return true;
+    }
 }
 
 module.exports = Database;

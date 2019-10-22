@@ -64,6 +64,17 @@ app.get('/:databaseName/:key', (req, res) => {
     }
 });
 
+app.delete('/:databaseName/:key', (req, res) => {
+    let { databaseName, key } = req.params;
+    const db = new Database(databaseName);
+    let response = db.removeTable(key);
+    if (!response) {
+        res.sendStatus(404);
+    } else {
+        res.send(response);
+    }
+});
+
 app.get('/:databaseName/:key/:_id', (req, res) => {
     let { databaseName, key, _id } = req.params;
     const db = new Database(databaseName);

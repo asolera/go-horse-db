@@ -41,8 +41,9 @@ Example: http://localhost:3000/
 |---|---|---|
 | / | GET | Retrieves all databases names. |
 | /:database | GET | Retrieves all data stored in provided database name. |
-| /:database/:key | GET | Get all records stored in provided key/database. |
-| /:database/:key | POST | Inserts a new record inside provided key/database. |
+| /:database/:key | GET | Get all records stored in the table. |
+| /:database/:key | POST | Inserts a new record inside the table. |
+| /:database/:key | DELETE | Removes the table. |
 | /:database/:key/:id | GET | Get data by UUID. |
 | /:database/:key/:id | PUT | Updates the record. |
 | /:database/:key/:id | DELETE | Deletes the record. |
